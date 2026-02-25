@@ -1,18 +1,23 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import heroVideo from "@/assets/hero-bali-video.mp4";
 import heroBali from "@/assets/hero-bali.jpg";
 
 const HeroSection = ({ onExplore }: { onExplore: () => void }) => {
   return (
     <section className="relative min-h-[100svh] flex items-center justify-center overflow-hidden">
-      {/* Background image */}
+      {/* Background video */}
       <div className="absolute inset-0">
-        <img
-          src={heroBali}
-          alt="Luxury Bali villa overlooking rice terraces at sunset"
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          poster={heroBali}
           className="w-full h-full object-cover"
-          loading="eager"
-        />
+        >
+          <source src={heroVideo} type="video/mp4" />
+        </video>
         <div className="absolute inset-0 bg-gradient-to-b from-primary/40 via-primary/20 to-background/90" />
       </div>
 
