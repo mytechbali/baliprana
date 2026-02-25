@@ -1,4 +1,4 @@
-import { MapPin, Sparkles, Clock, ChevronDown } from "lucide-react";
+import { MapPin, Sparkles, Clock, ChevronDown, Sun, Moon } from "lucide-react";
 import { motion } from "framer-motion";
 import {
   Menubar,
@@ -6,8 +6,8 @@ import {
   MenubarTrigger,
   MenubarContent,
   MenubarItem,
-  MenubarSeparator,
 } from "@/components/ui/menubar";
+import { useTheme } from "@/components/ThemeProvider";
 
 const regions = ["All", "Ubud", "Uluwatu", "Canggu"];
 const vibes = ["All", "Adventure", "Wellness", "Luxury"];
@@ -19,6 +19,8 @@ interface QuickFiltersProps {
 }
 
 const QuickFilters = ({ filters, onFilterChange }: QuickFiltersProps) => {
+  const { theme, toggleTheme } = useTheme();
+
   return (
     <motion.div
       initial={{ opacity: 0, y: -10 }}
@@ -27,7 +29,7 @@ const QuickFilters = ({ filters, onFilterChange }: QuickFiltersProps) => {
       className="sticky top-0 z-40 glass-strong shadow-soft"
     >
       <div className="section-padding py-3">
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-6xl mx-auto flex items-center justify-center gap-3">
           <Menubar className="border-none bg-transparent p-0 h-auto gap-1">
             {/* Region Menu */}
             <MenubarMenu>
@@ -116,6 +118,15 @@ const QuickFilters = ({ filters, onFilterChange }: QuickFiltersProps) => {
               </MenubarContent>
             </MenubarMenu>
           </Menubar>
+
+          {/* Theme Toggle */}
+          <button
+            onClick={toggleTheme}
+            className="p-2 rounded-full bg-secondary text-secondary-foreground hover:bg-muted transition-all duration-200"
+            aria-label="Toggle theme"
+          >
+            {theme === "light" ? <Moon size={16} /> : <Sun size={16} />}
+          </button>
         </div>
       </div>
     </motion.div>
