@@ -1,5 +1,6 @@
 import { useRef, useState } from "react";
 import HeroSection from "@/components/HeroSection";
+import DestinationSlider from "@/components/DestinationSlider";
 import QuickFilters from "@/components/QuickFilters";
 import EscapesGrid from "@/components/EscapesGrid";
 import WhyUsSection from "@/components/WhyUsSection";
@@ -19,6 +20,7 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <HeroSection onExplore={scrollToGrid} />
+      <DestinationSlider />
       <QuickFilters filters={filters} onFilterChange={setFilters} />
       <EscapesGrid ref={gridRef} filters={filters} onBooking={() => setBookingOpen(true)} />
       <WhyUsSection />
