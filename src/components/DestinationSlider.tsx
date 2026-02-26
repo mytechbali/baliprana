@@ -2,7 +2,8 @@ import { useState, useEffect, useCallback } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { motion } from "framer-motion";
-
+import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
 import imgUbud from "@/assets/card-ubud.jpg";
 import imgUluwatu from "@/assets/card-uluwatu.jpg";
 import imgCanggu from "@/assets/card-canggu.jpg";
@@ -10,27 +11,19 @@ import imgDining from "@/assets/card-dining.jpg";
 
 const slides = [
   {
-    image: imgUbud,
-    title: "Ubud",
-    subtitle: "The Cultural Heart",
+    image: imgUbud, title: "Ubud", subtitle: "The Cultural Heart", slug: "ubud",
     description: "Lush rice terraces, ancient temples, and artisan villages nestled in Bali's spiritual highlands.",
   },
   {
-    image: imgUluwatu,
-    title: "Uluwatu",
-    subtitle: "Cliffside Paradise",
+    image: imgUluwatu, title: "Uluwatu", subtitle: "Cliffside Paradise", slug: "uluwatu",
     description: "Dramatic ocean cliffs, world-class surf breaks, and sunset temples perched above the Indian Ocean.",
   },
   {
-    image: imgCanggu,
-    title: "Canggu",
-    subtitle: "Bohemian Coastline",
+    image: imgCanggu, title: "Canggu", subtitle: "Bohemian Coastline", slug: "canggu",
     description: "A vibrant blend of beach culture, creative cafés, and laid-back luxury on Bali's southwest coast.",
   },
   {
-    image: imgDining,
-    title: "Seminyak",
-    subtitle: "Refined Indulgence",
+    image: imgDining, title: "Seminyak", subtitle: "Refined Indulgence", slug: "seminyak",
     description: "Upscale dining, boutique shopping, and golden-sand beaches where elegance meets island ease.",
   },
 ];
@@ -86,9 +79,19 @@ const DestinationSlider = () => {
                   <h2 className="text-4xl md:text-6xl lg:text-7xl font-light text-primary-foreground mb-4">
                     {slide.title}
                   </h2>
-                  <p className="text-base md:text-lg text-primary-foreground/80 font-light leading-relaxed max-w-md">
+                  <p className="text-base md:text-lg text-primary-foreground/80 font-light leading-relaxed max-w-md mb-6">
                     {slide.description}
                   </p>
+                  <div className="flex flex-wrap gap-3">
+                    <Link to={`/destination/${slide.slug}`}>
+                      <Button variant="accent" size="lg">Explore {slide.title}</Button>
+                    </Link>
+                    <Link to="/join">
+                      <Button variant="outline" size="lg" className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10">
+                        Join Us
+                      </Button>
+                    </Link>
+                  </div>
                 </motion.div>
               </div>
             </div>
