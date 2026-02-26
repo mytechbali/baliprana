@@ -5,6 +5,7 @@ import EscapesGrid from "@/components/EscapesGrid";
 import WhyUsSection from "@/components/WhyUsSection";
 import BookingDrawer from "@/components/BookingDrawer";
 import Footer from "@/components/Footer";
+import WhatsAppButton from "@/components/WhatsAppButton";
 
 const Index = () => {
   const gridRef = useRef<HTMLElement>(null);
@@ -23,6 +24,7 @@ const Index = () => {
       <WhyUsSection />
       <Footer />
       <BookingDrawer open={bookingOpen} onOpenChange={setBookingOpen} />
+      <WhatsAppButton />
     </div>
   );
 };
